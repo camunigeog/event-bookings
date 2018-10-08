@@ -1,0 +1,14 @@
+<?php
+
+# Settings
+$settings = array (
+	'hostname' => 'localhost',
+	'username' => 'the_username',
+	'password' => 'the_password',
+);
+
+# Load and run the event bookings class
+require_once ('event-bookings/eventBookings.php');
+new eventBookings ($settings);
+
+?>
