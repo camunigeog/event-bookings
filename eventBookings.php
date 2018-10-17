@@ -99,7 +99,8 @@ class eventBookings extends frontControllerApplication
 			  `dataProtectionHtml` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Data protection note',
 			  `ticketLimit` int(11) DEFAULT NULL COMMENT 'Ticket limit',
 			  `guestsLimit` int(11) DEFAULT NULL COMMENT 'Guests limit',
-			  `guestsLimitTotalsField` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Field for determining guest ticket totals for limit'
+			  `guestsLimitTotalsField` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Field for determining guest ticket totals for limit',
+			  `soldOutMessage` VARCHAR(255) NOT NULL DEFAULT 'We regret that all tickets have now been booked. We hope you will be able to join us at another event in due course.' COMMENT 'Sold out message'
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table of events';
 			
 			CREATE TABLE `settings` (
@@ -198,7 +199,7 @@ class eventBookings extends frontControllerApplication
 		
 		# If there is a ticket limit, ensure it has not been reached
 		if ($this->isSoldOut ($event)) {
-			$html .= "\n<p>We regret that all tickets have unfortunately now been booked. We hope you will be able to join us at another event in due course.</p>";
+			$html .= "\n<p>" . htmlspecialchars ($event['soldOutMessage']) . '</p>';
 			echo $html;
 			return;
 		}
