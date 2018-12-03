@@ -293,7 +293,7 @@ class eventBookings extends frontControllerApplication
 		# Construct the query
 		$table = $event['form'];
 		$field = $event['guestsLimitTotalsField'];
-		$query = "SELECT SUM(`{$field}`) AS total FROM `{$table}`;";
+		$query = "SELECT SUM(CAST(REPLACE (`{$field}`, '', '') AS SIGNED INTEGER)) AS total FROM `{$table}`;";	// The REPLACE is done to ensure an ENUM field uses the values not the index positions for a count
 		
 		# Get the result
 		$totalBooked = $this->databaseConnection->getOneField ($query, 'total');
