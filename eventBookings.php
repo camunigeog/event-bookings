@@ -21,6 +21,7 @@ class eventBookings extends frontControllerApplication
 			'useSettings' => true,
 			'settingsTableExplodeTextarea' => array ('sessions', 'projects'),
 			'useCamUniLookup' => false,
+			'tabUlClass' => 'tabsflat',
 		);
 		
 		# Return the defaults
