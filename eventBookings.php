@@ -87,7 +87,7 @@ class eventBookings extends frontControllerApplication
 			CREATE TABLE `administrators` (
 			  `username` varchar(255) COLLATE utf8_unicode_ci PRIMARY KEY NOT NULL COMMENT 'Username',
 			  `active` enum('','Yes','No') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Yes' COMMENT 'Currently active?'
-			) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='System administrators';
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci COMMENT='System administrators';
 			
 			CREATE TABLE `events` (
 			  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT 'Event #',
@@ -107,7 +107,7 @@ class eventBookings extends frontControllerApplication
 			CREATE TABLE `settings` (
 			  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT 'Automatic key (ignored)',
 			  `feedbackRecipient` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Recipient e-mail'
-			) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Settings';
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci COMMENT='Settings';
 		";
 	}
 	
